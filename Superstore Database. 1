@@ -1,0 +1,27 @@
+--Superstore Database
+
+select price 
+from superstore
+order by price desc;
+
+select item_name 
+from superstore
+order by category;
+
+select avg (price)
+from superstore;
+
+
+select max (price)
+from superstore;
+
+select *
+from superstore;
+
+select avg (stock_quantity)
+from superstore
+where Item_name = 'kitchen_name';
+
+select *
+from superstore
+where Item_name = 'AirPurifier'
