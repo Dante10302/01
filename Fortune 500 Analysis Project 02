@@ -1,0 +1,25 @@
+select *
+from fortune_companies;
+
+select industry, paid_time_off_days,
+case when paid_time_off_days >= 20 then 'much time off'
+when paid_time_off_days >=10 then 'time off'
+else 'normal'
+end as time_off
+from fortune_companies
+where healthcare_benefits = 1
+order by employees desc;
+
+select industry, avg (employees) as avgEmployees
+from fortune_companies
+group by industry
+having  avgEmployees >= 100000;
+
+select *
+from fortune_companies
+where paid_time_off_days >= 15
+and maternity_leave_weeks >= 10;
+
+select industry, avg(employees) as AVGEMPLOYEES
+from fortune_companies
+group by industry
