@@ -25,3 +25,21 @@ where Item_name = 'kitchen_name';
 select *
 from superstore
 where Item_name = 'AirPurifier'
+
+
+-- second try
+select *
+from superstore;
+
+select price,(item_name)
+from superstore;
+
+select sum(price)
+from superstore;
+
+select average_rating,(item_name)
+from superstore
+where stock_quantity <50
+
+
+
