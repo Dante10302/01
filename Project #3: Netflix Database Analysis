@@ -1,0 +1,35 @@
+--Try to figure out which attribute you'd use to join the two Netflix tables. How can you see what attributes (aka columns) there are in each table to find out what they have in common?
+--Using the PostgreSQL dialect, write a join to select a few columns from both tables at the same time.
+select count(*) from netflix_titles_info;
+--How many movie titles are there in the database? (movies only, not tv shows)
+select count (*)
+from  netflix_titles_info
+where type = 'Movie';
+--When was the most recent batch of tv shows and/or movies added to the database?
+select max(date(date_added))
+from "netflix_titles_info";
+          
+ --List all the movies and tv shows in alphabetical order.          
+ select title
+ from  netflix_titles_info
+ order by title asc;
+ --Who was the Director for the movie The Starling?          
+ SELECT
+director
+FROM "netflix_titles_info" titles
+LEFT JOIN "netflix_people" people
+ON titles.show_id=people.show_id
+WHERE titles.title='The Starling';
+--What is the oldest movie in the database and what year was it made?
+select release_year
+from  netflix_titles_info
+order by release_year asc
+limit 1;
+
+SELECT title, release_year
+FROM "netflix_titles_info"
+WHERE type = 'Movie'
+AND release_year <=
+(SELECT MIN(release_year)
+FROM "netflix_titles_info"
+WHERE type = 'Movie');
